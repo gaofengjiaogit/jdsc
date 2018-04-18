@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd ">  
+    <!-- 自动扫描 -->  
+    <context:component-scan base-package="org.jdsc" />  
+    
+    <!-- 加载配置文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+  
+  	<!-- 配置数据库连接池（c3p0） -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!-- 基本信息 -->
+        <property name="jdbcUrl" value="${url}"></property>
+        <property name="driverClass" value="${driver}"></property>
+        <property name="user" value="${user}"></property>
+        <property name="password" value="${password}"></property>
+        <!-- 其他配置 -->
+        <property name="initialPoolSize" value="${initialPoolSize}"></property>
+        <property name="minPoolSize" value="${minPoolSize}"></property>
+        <property name="maxPoolSize" value="${maxPoolSize}"></property>
+        <property name="acquireIncrement" value="${acquireIncrement}"></property>
+        <property name="acquireRetryAttempts" value="${acquireRetryAttempts}"></property>
+        <property name="acquireRetryDelay" value="${acquireRetryDelay}"></property>
+        <property name="maxIdleTime" value="${maxIdleTime}"></property>
+    </bean>
+    
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />  
+        <!-- 自动扫描mapping.xml文件 -->  
+        <property name="mapperLocations" value="classpath:org/jdsc/mapper/*.xml"></property>  
+    </bean>  
+    
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="org.jdsc.dao" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean>  
+  
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->  
+    <bean id="transactionManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>  
+  
+</beans> 
