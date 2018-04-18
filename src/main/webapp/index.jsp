@@ -22,6 +22,7 @@
 				success:function(data){
 					if(data==true){
 						alert("数据请求成功");
+						alert("数据请求成功");
 					}
 				}
 			});
