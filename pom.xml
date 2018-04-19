@@ -170,7 +170,7 @@
              <artifactId>tomcat7-maven-plugin</artifactId>  
              <configuration>  
                  <port>8080</port>  
-                 <path>/jdsc</path>  
+                 <path>/jdsp</path>  
              </configuration>  
          </plugin>
     </plugins>

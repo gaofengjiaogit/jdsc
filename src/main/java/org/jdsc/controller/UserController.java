@@ -23,6 +23,6 @@ public class UserController {
 		System.err.println();
 		List<Map> list = this.userService.getUser();
 		System.err.println(list.toString());
-		return true;
+		return list;
 	}
 }
