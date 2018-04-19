@@ -20,9 +20,8 @@
 				url: "<%=projectName%>user/getuser.do",
 				dataType: 'json',
 				success:function(data){
-					if(data==true){
-						alert("数据请求成功!!!");
-					}
+					console.log(data);
+					alert(data[0].id+" "+data[0].name+" "+data[0].username+" "+data[0].passwd);
 				}
 			});
 		})
