@@ -20,7 +20,7 @@
 				url: "<%=projectName%>user/getuser.do",
 				dataType: 'json',
 				success:function(data){
-					alert(data[0].id+" "+data[0].name+" "+data[0].username+" "+data[0].passwd);
+					alert(data[0].id+"-"+data[0].name+"-"+data[0].username+"-"+data[0].passwd);
 				}
 			});
 		})
