@@ -20,11 +20,11 @@
 	      <scope>test</scope>
 	    </dependency>
 	    <!-- 如果maven项目目录显示不正确添加 -->
-	    <dependency>  
+	    <!-- <dependency>  
 	            <groupId>javax</groupId>  
 	            <artifactId>javaee-api</artifactId>  
 	            <version>7.0</version>  
-	    </dependency>
+	    </dependency> -->
 	    <!-- spring核心包 -->  
         <dependency>  
             <groupId>org.springframework</groupId>  
