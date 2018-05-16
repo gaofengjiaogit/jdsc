@@ -13,21 +13,9 @@
 </head>
 <script type="text/javascript" src="static/jQuery/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$("#us").on("click",function(){
-			$.ajax({
-				type: 'post',
-				url: "<%=projectName%>user/getuser.do",
-				dataType: 'json',
-				success:function(data){
-					alert(data[0].id+"-"+data[0].name+"-"+data[0].username+"-"+data[0].passwd);
-				}
-			});
-		})
-	})
+	
 </script>
 <body>
-	<button type="button" id="us">点击查询用户</button>
 </body>
 
 </html>
