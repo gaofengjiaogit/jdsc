@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 配置实体类的别名，配置实体类别名的目的是为了在引用实体类时可以使用实体类的别名来代替实体类，达到简写的目的 -->  
+    <typeAliases>  
+        <!-- 为实体类org.jdsp.pojo.User配置一个别名User -->  
+        <!-- <typeAlias type="org.jdsp.pojo.User" alias="user"/> -->
+         
+        <!-- 为org.jdsp.pojo包下的所有实体类配置别名，MyBatis默认的设置别名的方式就是去除类所在的包后的简单的类名  
+        比如org.jdsp.pojo.User这个实体类的别名就会被设置成User  
+         -->  
+        <package name="org.jdsp.pojo"/>  
+    </typeAliases>  
+</configuration>
